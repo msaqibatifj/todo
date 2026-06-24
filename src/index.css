@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+}
+
+/* Base style resets */
+:root {
+  /* Default: BOLD LIGHT (Yellow / White / Black Neo-Brutalist) */
+  --bg-primary: #fefce8; /* Soft yellow-50 background */
+  --bg-secondary: #ffffff; /* Crisp white */
+  --bg-card: #ffffff; /* Solid white card base */
+  --bg-card-hover: #fef08a; /* Bright yellow highlight on hover */
+  --border: #000000; /* Solid bold black borders */
+  --blur: none;
+  --accent: #facc15; /* Vibrant yellow */
+  --accent-hover: #000000;
+  --accent-glow: rgba(0, 0, 0, 0.15);
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --text-muted: #4b5563; /* Dark gray */
+  --shadow: 4px 4px 0px 0px #000000; /* Distinctive flat hard shadow */
+  --radius: 0px; /* Sharp corners */
+  --radius-sm: 0px;
+}
+
+/* BOLD DARK (High-contrast pure black and bright white/yellow) */
+[data-color="dark"] {
+  --bg-primary: #000000; /* Pure black canvas */
+  --bg-secondary: #121212; /* Deep charcoal */
+  --bg-card: #121212; /* Dark solid card base */
+  --bg-card-hover: #1c1917; /* Slate charcoal */
+  --border: #ffffff; /* Bold white borders */
+  --blur: none;
+  --accent: #facc15; /* Vibrant yellow accent */
+  --accent-hover: #ffffff;
+  --accent-glow: rgba(250, 204, 21, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: #e5e7eb;
+  --text-muted: #9ca3af;
+  --shadow: 4px 4px 0px 0px #ffffff; /* Flat sharp white shadow */
+  --radius: 0px;
+  --radius-sm: 0px;
+}
+
+/* Minimalist selection variations */
+[data-theme="minimal"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --bg-card: #ffffff;
+  --bg-card-hover: #e5e7eb;
+  --border: #000000;
+  --blur: none;
+  --accent: #000000;
+  --accent-hover: #1f2937;
+  --accent-glow: rgba(0, 0, 0, 0.1);
+  --text-primary: #000000;
+  --text-secondary: #1f2937;
+  --text-muted: #4b5563;
+  --shadow: 4px 4px 0px 0px #000000;
+  --radius: 0px;
+  --radius-sm: 0px;
+}
+
+[data-theme="minimal"][data-color="dark"] {
+  --bg-primary: #000000;
+  --bg-secondary: #111827;
+  --bg-card: #000000;
+  --bg-card-hover: #1f2937;
+  --border: #ffffff;
+  --blur: none;
+  --accent: #ffffff;
+  --accent-hover: #e5e7eb;
+  --accent-glow: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #e5e7eb;
+  --text-muted: #9ca3af;
+  --shadow: 4px 4px 0px 0px #ffffff;
+  --radius: 0px;
+  --radius-sm: 0px;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Custom styled blocky scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-left: 2px solid var(--border);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Card Neo-Brutalist Layout Components */
+.card-glass {
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-glass:hover {
+  background: var(--bg-card-hover);
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px 0px var(--border);
+  border-color: var(--border);
+}
+
+.input-glass {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  outline: none;
+  background: var(--bg-secondary);
+  border: 3px solid var(--border);
+  color: var(--text-primary);
+  box-shadow: 3px 3px 0px 0px var(--border);
+  transition: all 0.15s ease;
+  font-family: var(--font-mono);
+}
+
+.input-glass::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.input-glass:focus {
+  background: var(--bg-card-hover);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px var(--border);
+}
+
+/* High-contrast solid key buttons */
+.btn-primary {
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #000000 !important; /* Always black text for high readability on yellow background */
+  background: #facc15; /* Standard bright yellow */
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px 0px #000000;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-color="dark"] .btn-primary {
+  color: #000000 !important;
+  background: #facc15;
+  border: 3px solid #ffffff;
+  box-shadow: 4px 4px 0px 0px #ffffff;
+}
+
+.btn-primary:hover {
+  background: #ffffff;
+  color: #000000 !important;
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px 0px #000000;
+}
+
+[data-color="dark"] .btn-primary:hover {
+  background: #ffffff;
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px 0px #ffffff;
+}
+
+.btn-primary:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px 0px 0px #000000;
+}
+
+[data-color="dark"] .btn-primary:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px 0px 0px #ffffff;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Secondary Button / Ghost styled block */
+.btn-ghost {
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  border: 3px solid var(--border);
+  background: var(--bg-secondary);
+  box-shadow: 4px 4px 0px 0px var(--border);
+  transition: all 0.15s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-ghost:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px 0px var(--border);
+}
+
+.btn-ghost:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px 0px 0px var(--border);
+}
+
+.btn-ghost:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}

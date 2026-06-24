@@ -1,0 +1,6 @@
+{
+  "name": "TaskFlow Todo",
+  "description": "A clean, fast, tab-synced todo web app with multiple lists, priority tags, subtasks, glassmorphic themes, and keyboard shortcuts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
